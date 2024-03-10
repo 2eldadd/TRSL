@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Web</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Pacifico', cursive;
+        background-image: url("http://getwallpapers.com/wallpaper/full/d/9/8/464566.jpg");
+        background-size: cover; /* Adjust the background image to cover the entire screen */
+        background-position: center;
+        transition: background-color 0.5s ease; /* Smooth transition for background color change */
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+    h1 {
+        font-size: 6rem; /* Adjusted font size to make the text bigger */
+        color: rgb(104, 255, 104); /* Changed color to green */
+    }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<script>
+    function showPopupAndPlaySound() {
+        alert("Email and password sent successfully!");
+        var audio = new Audio("E:\\youtube_zO8D7vmCy30_audio.mp3");
+        audio.play();
+        
+        // Change background colors after receiving email and password
+        var flashingInterval = setInterval(function() {
+            document.body.style.backgroundColor = "red";
+            setTimeout(function() {
+                document.body.style.backgroundColor = "blue";
+            }, 250); // Change to blue after 250ms
+        }, 500); // Repeat every 500ms
+        
+        // Stop flashing after 3 seconds
+        setTimeout(function() {
+            clearInterval(flashingInterval);
+        }, 3000);
+    }
+</script>
+</head>
+<body>
+<div class="container">
+    <h1>The Web</h1>
+</div>
+
+<script>
+    // Assuming your Python script sends a signal to the webpage when the email and password are sent
+    // Here, I'm simulating that with a button click
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("sendButton").addEventListener("click", function() {
+            // Simulate sending email and password
+            // Replace this with the actual code that sends the data
+            // This function should be called when your Python script sends the data
+            showPopupAndPlaySound();
+        });
+    });
+</script>
+
+</body>
+</html>
