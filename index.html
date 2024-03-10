@@ -23,47 +23,59 @@
     }
     h1 {
         font-size: 6rem; /* Adjusted font size to make the text bigger */
-        color: rgb(104, 255, 104); /* Changed color to green */
+        color: rgb(136, 255, 136); /* Changed color to green */
     }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <script>
-    function showPopupAndPlaySound() {
-        alert("Email and password sent successfully!");
-        var audio = new Audio("E:\\youtube_zO8D7vmCy30_audio.mp3");
-        audio.play();
-        
-        // Change background colors after receiving email and password
-        var flashingInterval = setInterval(function() {
-            document.body.style.backgroundColor = "red";
-            setTimeout(function() {
-                document.body.style.backgroundColor = "blue";
-            }, 250); // Change to blue after 250ms
-        }, 500); // Repeat every 500ms
-        
-        // Stop flashing after 3 seconds
-        setTimeout(function() {
-            clearInterval(flashingInterval);
-        }, 3000);
+    function sendDataToWebsite(email, password) {
+        // Define the URL of the website where you want to send the data
+        var url = 'https://example.com/login';
+
+        // Define the form data to be sent
+        var data = {
+            'email': email,
+            'password': password
+        };
+
+        // Send a POST request to the website with the form data
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Email and password sent successfully!");
+                // Optionally, you can add further actions here
+            } else {
+                alert("Failed to send email and password.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("An error occurred while sending email and password.");
+        });
     }
 </script>
 </head>
 <body>
 <div class="container">
-    <h1>The Web</h1>
+    <h1>TRSL</h1>
 </div>
 
 <script>
-    // Assuming your Python script sends a signal to the webpage when the email and password are sent
-    // Here, I'm simulating that with a button click
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("sendButton").addEventListener("click", function() {
-            // Simulate sending email and password
-            // Replace this with the actual code that sends the data
-            // This function should be called when your Python script sends the data
-            showPopupAndPlaySound();
-        });
-    });
+    // Function to simulate form submission and send data to website
+    function simulateFormSubmission() {
+        // Get email and password from user input
+        var email = prompt("Enter your email:");
+        var password = prompt("Enter your password:");
+
+        // Call function to send data to website
+        sendDataToWebsite(email, password);
+    }
 </script>
 
 </body>
